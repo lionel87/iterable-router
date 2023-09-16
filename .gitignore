@@ -1,3 +1,6 @@
+/esm/
+/cjs/
+
 # Logs
 logs
 *.log

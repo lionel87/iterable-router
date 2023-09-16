@@ -1,0 +1,65 @@
+{
+  "name": "iterable-router",
+  "version": "0.0.0",
+  "description": "Router for iterable types in Typescript",
+  "type": "module",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "esm/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./cjs/index.js",
+      "default": "./esm/index.js"
+    }
+  },
+  "engines": {
+    "node": ">=10.0.0",
+    "deno": ">=1.0.0"
+  },
+  "scripts": {
+    "prepack": "npm run build && npm run test",
+    "postversion": "git push && git push --tags",
+    "clean": "rimraf esm cjs coverage",
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc",
+    "watch:esm": "tsc --watch",
+    "build:cjs": "tsc --outDir cjs --module commonjs && echo { \"type\": \"commonjs\" }>cjs/package.json",
+    "watch:cjs": "npm run build:cjs && tsc --outDir cjs --module commonjs --watch",
+    "lint": "eslint",
+    "test": "mocha",
+    "coverage": "c8 -r text -r text-summary -r lcov npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lionel87/iterable-router.git"
+  },
+  "keywords": [
+    "iterable",
+    "async iterable",
+    "object stream",
+    "pipe",
+    "transform",
+    "message",
+    "router",
+    "map",
+    "reduce",
+    "filter",
+    "splitter",
+    "aggregator",
+    "resequencer",
+    "normalizer",
+    "channel"
+  ],
+  "author": "László BULIK",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^14.18.9",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.0",
+    "c8": "^8.0.0",
+    "eslint": "^8.1.0",
+    "mocha": "^10.2.0",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.0.4"
+  }
+}
